@@ -1,7 +1,7 @@
 import React from 'react'
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
-import { Navbar, Sidebar, Footer } from './components'
-import { Home, SingleProduct, Products, Cart, Checkout, PrivateRoute, Error, About } from './pages'
+import {BrowserRouter as Router, Redirect, Route, Switch} from 'react-router-dom'
+import {Footer, Navbar, Sidebar} from './components'
+import {About, Cart, Checkout, Error, Home, Products, SingleProduct} from './pages'
 
 function App() {
     return (
@@ -33,9 +33,14 @@ function App() {
                     <Checkout/>
                 </Route>
 
-                <Router path="*">
+                <Route path="*">
+                    <Redirect from='*' to='/404'/>
                     <Error/>
-                </Router>
+                </Route>
+
+                <Route path='/404'>
+                    <Error/>
+                </Route>
             </Switch>
             <Footer/>
         </Router>
