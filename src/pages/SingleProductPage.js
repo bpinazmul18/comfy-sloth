@@ -18,9 +18,10 @@ const SingleProductPage = () => {
   const { id } = useParams()
   const history  = useHistory()
   const {single_products_loading: loading, single_products_error: error, single_products: products, fetchSingleProducts} = useProductsContext()
+  const { name, price, description, stock, stars, review, id: sku, company, images } = products
 
   useEffect(() => {
-    fetchSingleProducts(`$s{url}${id}`)
+    fetchSingleProducts(`${url}${id}`)
   },[id])
 
   useEffect(() => {
@@ -39,7 +40,35 @@ const SingleProductPage = () => {
     return <Error/>
   }
 
-  return <h4>single product page</h4>
+  return <Wrapper>
+    <PageHero title={name} products/>
+    <div className="section section-center page">
+      <Link to="/products" className="btn">back to products</Link>
+      <div className="product-center">
+        <ProductImages/>
+        <div className="content">
+          <h2>{ name }</h2>
+          <Stars/>
+          <h5 className="price">{formatPrice(price)}</h5>
+          <p className="desc">{description}</p>
+          <p className="info">
+            <span>Available : </span>
+            {stock > 0 ? 'in stock' : 'out of stock'}
+          </p>
+          <p className="info">
+              <span>SKU : </span>
+            {sku}
+          </p>
+          <p className="info">
+            <span>Brand : </span>
+            {company}
+          </p>
+          <hr/>
+          {stock > 0 && <AddToCart/>}
+        </div>
+      </div>
+    </div>
+  </Wrapper>
 }
 
 const Wrapper = styled.main`
