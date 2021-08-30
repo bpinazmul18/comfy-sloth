@@ -16,8 +16,9 @@ const getLocalStorage = () => {
     return [];
   }
 };
+
 const initialState = {
-  cart: getLocalStorage,
+  cart: getLocalStorage(),
   total_items: 0,
   total_amount: 0,
   shipping_fee: 534,
@@ -41,6 +42,7 @@ export const CartProvider = ({ children }) => {
 
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(state.cart));
+    console.log(state.cart);
   }, [state.cart]);
 
   return (
