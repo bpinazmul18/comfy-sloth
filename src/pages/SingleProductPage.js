@@ -17,8 +17,8 @@ import { Link } from 'react-router-dom'
 const SingleProductPage = () => {
   const { id } = useParams()
   const history  = useHistory()
-  const {single_products_loading: loading, single_products_error: error, single_products: products, fetchSingleProducts} = useProductsContext()
-  const { name, price, description, stock, stars, reviews, id: sku, company, images } = products
+  const {single_products_loading: loading, single_products_error: error, single_products: product, fetchSingleProducts} = useProductsContext()
+  const { name, price, description, stock, stars, reviews, id: sku, company, images } = product
 
   useEffect(() => {
     fetchSingleProducts(`${url}${id}`)
@@ -64,7 +64,7 @@ const SingleProductPage = () => {
             {company}
           </p>
           <hr/>
-          {stock > 0 && <AddToCart/>}
+          {stock > 0 && <AddToCart product={product}/>}
         </div>
       </div>
     </div>
