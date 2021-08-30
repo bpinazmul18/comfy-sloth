@@ -18,7 +18,7 @@ const SingleProductPage = () => {
   const { id } = useParams()
   const history  = useHistory()
   const {single_products_loading: loading, single_products_error: error, single_products: products, fetchSingleProducts} = useProductsContext()
-  const { name, price, description, stock, stars, review, id: sku, company, images } = products
+  const { name, price, description, stock, stars, reviews, id: sku, company, images } = products
 
   useEffect(() => {
     fetchSingleProducts(`${url}${id}`)
@@ -45,10 +45,10 @@ const SingleProductPage = () => {
     <div className="section section-center page">
       <Link to="/products" className="btn">back to products</Link>
       <div className="product-center">
-        <ProductImages/>
+        <ProductImages images={images}/>
         <div className="content">
           <h2>{ name }</h2>
-          <Stars/>
+          <Stars stars={stars} reviews={reviews}/>
           <h5 className="price">{formatPrice(price)}</h5>
           <p className="desc">{description}</p>
           <p className="info">
