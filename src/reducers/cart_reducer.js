@@ -12,6 +12,18 @@ const cart_reducer = (state, action) => {
     const tempItem = state.cart.find((i) => i.id === id + color);
     console.log(tempItem);
     if (tempItem) {
+      const tempCart = state.cart.map((cartItem) => {
+        if (cartItem.id === id + color) {
+          let newAmount = cartItem.amount + amount;
+          if (newAmount > cartItem.max) {
+            newAmount = cartItem.max;
+          }
+          return { ...cartItem, amount: newAmount };
+        } else {
+          return cartItem;
+        }
+      });
+      return { ...state, cart: tempCart };
     } else {
       const newItem = {
         id: id + color,
