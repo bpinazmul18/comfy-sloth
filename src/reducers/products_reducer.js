@@ -59,6 +59,7 @@ const products_reducer = (state, action) => {
   }
 
   return state;
+  // eslint-disable-next-line
   throw new Error(`No Matching "${action.type}" - action type`);
 };
 
