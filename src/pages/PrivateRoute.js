@@ -6,12 +6,12 @@ import { useUserContext } from "../context/user_context";
 
 const PrivateRoute = ({ children, ...rest }) => {
   console.log(rest);
-  const { myUser } = useUserContext();
+  const { user } = useAuth0();
   return (
     <Route
       {...rest}
       render={() => {
-        return myUser ? children : <Redirect to="/" />;
+        return user ? children : <Redirect to="/" />;
       }}
     ></Route>
   );
