@@ -15,7 +15,7 @@ import { useProductsContext } from "./products_context";
 const initialState = {
   filtered_products: [],
   all_products: [],
-  grid_view: false,
+  grid_view: true,
   sort: "price-lowest",
   filters: {
     text: "",
@@ -76,7 +76,7 @@ export const FilterProvider = ({ children }) => {
     dispatch({ type: UPDATE_FILTERS, payload: { name, value } });
   };
   const clearFilters = () => {
-    dispatch({ type: CLEAR_FILTERS})
+    dispatch({ type: CLEAR_FILTERS });
   };
 
   return (
