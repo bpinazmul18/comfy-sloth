@@ -35,6 +35,9 @@ dependencies:
   prettier:
     specifier: ^2.3.2
     version: 2.8.8
+  qs:
+    specifier: ^6.12.1
+    version: 6.12.1
   react:
     specifier: ^17.0.1
     version: 17.0.2
