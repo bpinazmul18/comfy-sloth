@@ -26,6 +26,9 @@ dependencies:
   axios:
     specifier: ^0.21.1
     version: 0.21.4
+  call-bind:
+    specifier: ^1.0.7
+    version: 1.0.7
   dotenv:
     specifier: 8.2.0
     version: 8.2.0

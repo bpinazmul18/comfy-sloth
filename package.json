@@ -10,6 +10,7 @@
     "@testing-library/react": "^11.1.2",
     "@testing-library/user-event": "^12.2.2",
     "axios": "^0.21.1",
+    "call-bind": "^1.0.7",
     "dotenv": "8.2.0",
     "netlify": "6.0.12",
     "prettier": "^2.3.2",
